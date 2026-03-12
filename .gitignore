@@ -1,2 +1,2 @@
-# Credenciales Supabase — no subir al repositorio
-supabase.js
+# supabase.js se incluye en el repo porque la anon key es pública por diseño
+# La seguridad viene de las políticas RLS en Supabase, no de ocultar esta clave
