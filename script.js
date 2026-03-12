@@ -2,7 +2,7 @@
 // QUE NO SE PUDRA — Script
 // =============================================
 
-// --- Recipe Data ---
+// --- Recipe Data (se queda en JS) ---
 const RECIPES = [
     {
         id: 1,
@@ -96,6 +96,62 @@ const RECIPES = [
     },
 ];
 
+// --- Supabase: categorías de ingredientes ---
+const CATEGORY_LABELS = {
+    proteinas: '🥩 Proteínas',
+    verduras:  '🥦 Verduras',
+    bases:     '🌾 Bases',
+};
+const CATEGORY_ORDER = ['proteinas', 'verduras', 'bases'];
+
+// --- Cargar ingredientes desde Supabase ---
+async function loadIngredients() {
+    const grid    = document.getElementById('ingredient-grid');
+    const loading = document.getElementById('ingredients-loading');
+
+    const { data, error } = await db
+        .from('ingredients')
+        .select('*')
+        .order('category')
+        .order('name');
+
+    loading.remove();
+
+    if (error) {
+        grid.innerHTML = '<p class="ingredients-error">⚠️ No se pudieron cargar los ingredientes. Revisá la conexión con Supabase.</p>';
+        console.error('Supabase error:', error.message);
+        return;
+    }
+
+    // Agrupar por categoría
+    const byCategory = {};
+    data.forEach(ing => {
+        if (!byCategory[ing.category]) byCategory[ing.category] = [];
+        byCategory[ing.category].push(ing);
+    });
+
+    // Renderizar en el orden definido
+    CATEGORY_ORDER.forEach(cat => {
+        if (!byCategory[cat]) return;
+        const section = document.createElement('div');
+        section.className = 'ingredient-category';
+        section.innerHTML = `
+            <h3 class="category-title">${CATEGORY_LABELS[cat] || cat}</h3>
+            <div class="pills-row">
+                ${byCategory[cat].map(ing =>
+                    `<button class="pill" data-ingredient="${ing.name}">${ing.emoji} ${ing.name}</button>`
+                ).join('')}
+            </div>
+        `;
+        grid.appendChild(section);
+    });
+
+    // Agregar listeners a las pills generadas
+    grid.querySelectorAll('.pill').forEach(pill => {
+        pill.addEventListener('click', () => pill.classList.toggle('active'));
+    });
+}
+
 // --- Ingredient Checklist Logic ---
 
 function getSelectedIngredients() {
@@ -149,14 +205,13 @@ function renderResults() {
     const selected = getSelectedIngredients();
     const { canMake, almostMake } = matchRecipes(selected);
 
-    const resultados = document.getElementById('resultados');
+    const resultados      = document.getElementById('resultados');
     const seccionPosibles = document.getElementById('seccion-posibles');
-    const seccionCasi = document.getElementById('seccion-casi');
-    const gridPosibles = document.getElementById('recetas-posibles');
-    const gridCasi = document.getElementById('recetas-casi');
-    const vacio = document.getElementById('resultado-vacio');
+    const seccionCasi     = document.getElementById('seccion-casi');
+    const gridPosibles    = document.getElementById('recetas-posibles');
+    const gridCasi        = document.getElementById('recetas-casi');
+    const vacio           = document.getElementById('resultado-vacio');
 
-    // Show container
     resultados.classList.remove('hidden');
 
     if (canMake.length === 0 && almostMake.length === 0) {
@@ -168,7 +223,6 @@ function renderResults() {
 
     vacio.classList.add('hidden');
 
-    // "Podés hacer" section
     if (canMake.length > 0) {
         seccionPosibles.classList.remove('hidden');
         gridPosibles.innerHTML = canMake.map(({ recipe }) => renderRecipeCard(recipe, [])).join('');
@@ -176,7 +230,6 @@ function renderResults() {
         seccionPosibles.classList.add('hidden');
     }
 
-    // "Casi podés hacer" section
     if (almostMake.length > 0) {
         seccionCasi.classList.remove('hidden');
         gridCasi.innerHTML = almostMake.map(({ recipe, missing }) => renderRecipeCard(recipe, missing)).join('');
@@ -184,7 +237,6 @@ function renderResults() {
         seccionCasi.classList.add('hidden');
     }
 
-    // Scroll to results
     resultados.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
@@ -196,12 +248,11 @@ function clearSelection() {
 // --- Recipe Filter Logic (static grid) ---
 
 function initFilters() {
-    const filterBtns = document.querySelectorAll('.filter-btn');
+    const filterBtns  = document.querySelectorAll('.filter-btn');
     const recipeCards = document.querySelectorAll('#receta-grid-static .recipe-card');
 
     filterBtns.forEach(btn => {
         btn.addEventListener('click', () => {
-            // Update active button
             filterBtns.forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
 
@@ -213,14 +264,10 @@ function initFilters() {
                     return;
                 }
 
-                const matchesTime = filter === 'fast' ? card.dataset.time === 'fast' : true;
-                const matchesIngredients = filter === 'few' ? card.dataset.ingredients === 'few' : true;
-                const matchesPans = filter === 'one-pan' ? card.dataset.pans === 'one-pan' : true;
-
-                const shouldShow = filter === 'fast' ? matchesTime
-                    : filter === 'few' ? matchesIngredients
-                    : filter === 'one-pan' ? matchesPans
-                    : true;
+                const shouldShow = filter === 'fast'    ? card.dataset.time === 'fast'
+                                 : filter === 'few'     ? card.dataset.ingredients === 'few'
+                                 : filter === 'one-pan' ? card.dataset.pans === 'one-pan'
+                                 : true;
 
                 card.classList.toggle('hidden', !shouldShow);
             });
@@ -232,52 +279,40 @@ function initFilters() {
 
 function initScroll() {
     const header = document.querySelector('.header');
-
     window.addEventListener('scroll', () => {
-        if (window.scrollY > 60) {
-            header.classList.add('scrolled');
-        } else {
-            header.classList.remove('scrolled');
-        }
+        header.classList.toggle('scrolled', window.scrollY > 60);
     });
 }
 
 // --- Init ---
 
-document.addEventListener('DOMContentLoaded', () => {
-    // Pill toggle
-    document.querySelectorAll('.pill').forEach(pill => {
-        pill.addEventListener('click', () => {
-            pill.classList.toggle('active');
-        });
-    });
+document.addEventListener('DOMContentLoaded', async () => {
+    // 1. Cargar ingredientes desde Supabase (esperar antes de continuar)
+    await loadIngredients();
 
-    // Ver recetas button
+    // 2. Botón "Ver recetas"
     document.getElementById('btn-ver-recetas').addEventListener('click', renderResults);
 
-    // Limpiar selección button
+    // 3. Botón "Limpiar selección"
     document.getElementById('btn-limpiar').addEventListener('click', () => {
         clearSelection();
-        // Also remove custom pills
         document.getElementById('pills-otros').innerHTML = '';
         document.getElementById('categoria-otros').style.display = 'none';
     });
 
-    // Text input for ingredients
+    // 4. Input de texto para agregar ingredientes
     const inputIngrediente = document.getElementById('input-ingrediente');
-    const btnAgregar = document.getElementById('btn-agregar-ingrediente');
+    const btnAgregar       = document.getElementById('btn-agregar-ingrediente');
 
     function agregarIngrediente() {
         const valor = inputIngrediente.value.trim().toLowerCase();
         if (!valor) return;
 
-        // Check if it matches a predefined pill
         const pillExistente = document.querySelector(`.pill[data-ingredient="${valor}"]`);
         if (pillExistente) {
             pillExistente.classList.add('active');
             pillExistente.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         } else {
-            // Check if a custom pill for this ingredient already exists
             const yaExiste = document.querySelector(`#pills-otros .pill[data-ingredient="${valor}"]`);
             if (!yaExiste) {
                 const pillNueva = document.createElement('button');
@@ -297,13 +332,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     btnAgregar.addEventListener('click', agregarIngrediente);
-    inputIngrediente.addEventListener('keydown', (e) => {
+    inputIngrediente.addEventListener('keydown', e => {
         if (e.key === 'Enter') agregarIngrediente();
     });
 
-    // Recipe filters
+    // 5. Filtros de recetas y scroll del header
     initFilters();
-
-    // Header scroll
     initScroll();
 });

@@ -7,6 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <link rel="stylesheet" href="reset.css">
     <link rel="stylesheet" href="style.css">
     <title>Que No Se Pudra</title>
@@ -297,39 +298,17 @@
                     <button class="btn btn-primary" id="btn-agregar-ingrediente">Agregar</button>
                 </div>
 
-                <div class="ingredient-grid">
-                    <div class="ingredient-category">
-                        <h3 class="category-title">🥩 Proteínas</h3>
-                        <div class="pills-row">
-                            <button class="pill" data-ingredient="huevo">🥚 huevo</button>
-                            <button class="pill" data-ingredient="pollo">🍗 pollo</button>
-                            <button class="pill" data-ingredient="atún">🐟 atún</button>
-                            <button class="pill" data-ingredient="queso">🧀 queso</button>
-                        </div>
+                <div class="ingredient-grid" id="ingredient-grid">
+                    <div class="ingredients-loading" id="ingredients-loading">
+                        <span class="loading-spinner"></span>
+                        Cargando ingredientes...
                     </div>
-                    <div class="ingredient-category">
-                        <h3 class="category-title">🥦 Verduras</h3>
-                        <div class="pills-row">
-                            <button class="pill" data-ingredient="cebolla">🧅 cebolla</button>
-                            <button class="pill" data-ingredient="tomate">🍅 tomate</button>
-                            <button class="pill" data-ingredient="zanahoria">🥕 zanahoria</button>
-                            <button class="pill" data-ingredient="papa">🥔 papa</button>
-                            <button class="pill" data-ingredient="pimiento">🫑 pimiento</button>
-                            <button class="pill" data-ingredient="ajo">🧄 ajo</button>
-                        </div>
-                    </div>
-                    <div class="ingredient-category">
-                        <h3 class="category-title">🌾 Bases</h3>
-                        <div class="pills-row">
-                            <button class="pill" data-ingredient="arroz">🍚 arroz</button>
-                            <button class="pill" data-ingredient="pasta">🍝 pasta</button>
-                            <button class="pill" data-ingredient="pan">🍞 pan</button>
-                        </div>
-                    </div>
-                    <div class="ingredient-category" id="categoria-otros" style="display:none">
-                        <h3 class="category-title">➕ Otros ingredientes</h3>
-                        <div class="pills-row" id="pills-otros"></div>
-                    </div>
+                    <!-- Las categorías y pills se generan dinámicamente desde Supabase -->
+                </div>
+
+                <div class="ingredient-category" id="categoria-otros" style="display:none">
+                    <h3 class="category-title">➕ Otros ingredientes</h3>
+                    <div class="pills-row" id="pills-otros"></div>
                 </div>
 
                 <div class="heladera-cta">
@@ -535,6 +514,7 @@
         </div>
     </footer>
 
+    <script src="supabase.js"></script>
     <script src="script.js"></script>
 </body>
 

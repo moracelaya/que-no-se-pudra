@@ -585,6 +585,36 @@ ul {
    HELADERA — INGREDIENTES
    ============================================= */
 
+/* Loading state */
+.ingredients-loading {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    color: var(--color-text-muted);
+    font-size: var(--text-sm);
+    padding: var(--space-6) 0;
+}
+
+.loading-spinner {
+    width: 18px;
+    height: 18px;
+    border: 2px solid var(--color-border);
+    border-top-color: var(--color-primary);
+    border-radius: 50%;
+    animation: spin 0.7s linear infinite;
+    flex-shrink: 0;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.ingredients-error {
+    color: var(--color-primary);
+    font-size: var(--text-sm);
+    padding: var(--space-4) 0;
+}
+
 .heladera-section {
     padding: var(--space-24) 0;
     background-color: var(--color-surface);
