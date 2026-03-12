@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="style.css">
+    <title>Que No Se Pudra</title>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header class="header" id="top">
+        <a href="#top" class="logo">
+            <span class="logo-emoji">🥬</span>
+            <span class="logo-text">Que No Se Pudra</span>
+        </a>
+        <nav class="nav">
+            <ul>
+                <li><a href="#heladera">Heladera</a></li>
+                <li><a href="#recetas">Recetas</a></li>
+                <li><a href="#super">Súper</a></li>
+                <li><a href="#tips">Tips</a></li>
+            </ul>
+        </nav>
+        <a href="#heladera" class="btn btn-primary">Tengo esto en la heladera</a>
+    </header>
+
+    <main>
+
+        <!-- HERO -->
+        <section class="hero">
+
+            <!-- Ilustraciones SVG flotantes -->
+            <div class="hero-illustrations" aria-hidden="true">
+
+                <!-- Puerro — top-left -->
+                <svg class="illus illus-puerro" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 220">
+                    <ellipse cx="40" cy="200" rx="28" ry="18" fill="#D8EDAA"/>
+                    <rect x="27" y="105" width="26" height="95" rx="4" fill="#B8D890"/>
+                    <path d="M37 105 Q14 62 18 8 Q23 2 28 8 Q32 62 40 105Z" fill="#2D5A27"/>
+                    <path d="M43 105 Q66 58 62 4 Q57 -2 52 4 Q48 58 40 105Z" fill="#2D5A27"/>
+                    <ellipse cx="30" cy="212" rx="5" ry="8" fill="#8B7AB8"/>
+                    <ellipse cx="40" cy="216" rx="4" ry="7" fill="#8B7AB8"/>
+                    <ellipse cx="50" cy="212" rx="5" ry="8" fill="#8B7AB8"/>
+                </svg>
+
+                <!-- Pepino cortado — top-center-left -->
+                <svg class="illus illus-pepino" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120">
+                    <circle cx="60" cy="60" r="56" fill="#A8C97A"/>
+                    <circle cx="60" cy="60" r="42" fill="#C5DF9A"/>
+                    <ellipse cx="60" cy="30" rx="7" ry="13" fill="#7AAA4A"/>
+                    <ellipse cx="83" cy="45" rx="7" ry="13" transform="rotate(72 83 45)" fill="#7AAA4A"/>
+                    <ellipse cx="74" cy="76" rx="7" ry="13" transform="rotate(144 74 76)" fill="#7AAA4A"/>
+                    <ellipse cx="46" cy="76" rx="7" ry="13" transform="rotate(216 46 76)" fill="#7AAA4A"/>
+                    <ellipse cx="37" cy="45" rx="7" ry="13" transform="rotate(288 37 45)" fill="#7AAA4A"/>
+                    <circle cx="60" cy="60" r="6" fill="#7AAA4A"/>
+                </svg>
+
+                <!-- Tomate — top-right -->
+                <svg class="illus illus-tomate" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 155">
+                    <circle cx="70" cy="95" r="58" fill="#E84C2B"/>
+                    <ellipse cx="42" cy="42" rx="22" ry="9" transform="rotate(-40 42 42)" fill="#2D5A27"/>
+                    <ellipse cx="70" cy="34" rx="9" ry="24" fill="#2D5A27"/>
+                    <ellipse cx="98" cy="42" rx="22" ry="9" transform="rotate(40 98 42)" fill="#2D5A27"/>
+                    <rect x="66" y="12" width="8" height="22" rx="4" fill="#3A7232"/>
+                    <ellipse cx="48" cy="75" rx="14" ry="20" fill="#F06040" opacity="0.3"/>
+                </svg>
+
+                <!-- Pimiento amarillo — left-middle -->
+                <svg class="illus illus-pimiento" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130 165">
+                    <path d="M65 32 C100 30 120 62 118 98 C115 130 100 158 65 158 C30 158 15 130 12 98 C10 62 30 30 65 32Z" fill="#E8C832"/>
+                    <path d="M65 32 Q62 90 63 158" stroke="#C9A818" stroke-width="3" fill="none" opacity="0.4"/>
+                    <ellipse cx="65" cy="30" rx="20" ry="10" fill="#2D5A27"/>
+                    <rect x="62" y="8" width="7" height="24" rx="3" fill="#2D5A27"/>
+                    <ellipse cx="83" cy="18" rx="15" ry="6" transform="rotate(35 83 18)" fill="#3A7232"/>
+                </svg>
+
+                <!-- Hoja lavanda — bottom-left -->
+                <svg class="illus illus-hoja" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 160">
+                    <rect x="36" y="8" width="8" height="144" rx="4" fill="#6B5FA0"/>
+                    <ellipse cx="22" cy="38" rx="19" ry="9" transform="rotate(-28 22 38)" fill="#8B7AB8"/>
+                    <ellipse cx="58" cy="62" rx="19" ry="9" transform="rotate(28 58 62)" fill="#8B7AB8"/>
+                    <ellipse cx="22" cy="86" rx="19" ry="9" transform="rotate(-28 22 86)" fill="#8B7AB8"/>
+                    <ellipse cx="58" cy="110" rx="19" ry="9" transform="rotate(28 58 110)" fill="#8B7AB8"/>
+                    <ellipse cx="22" cy="132" rx="19" ry="9" transform="rotate(-28 22 132)" fill="#8B7AB8"/>
+                </svg>
+
+                <!-- Vaina de arveja — bottom-center -->
+                <svg class="illus illus-vaina" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 210 90">
+                    <path d="M12 45 Q35 8 105 8 Q175 8 198 45 Q175 82 105 82 Q35 82 12 45Z" fill="#6AAF3A"/>
+                    <circle cx="55" cy="40" r="15" fill="#4E962A"/>
+                    <circle cx="105" cy="37" r="15" fill="#4E962A"/>
+                    <circle cx="155" cy="40" r="15" fill="#4E962A"/>
+                    <path d="M12 45 Q2 39 6 30 Q10 40 12 45Z" fill="#3E8620"/>
+                    <path d="M198 45 Q208 39 204 30 Q200 40 198 45Z" fill="#3E8620"/>
+                </svg>
+
+                <!-- Remolacha — right-middle -->
+                <svg class="illus illus-remolacha" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 175">
+                    <circle cx="70" cy="100" r="65" fill="#E87098"/>
+                    <path d="M70 165 Q67 172 70 178 Q73 172 70 165Z" fill="#C85878"/>
+                    <ellipse cx="42" cy="40" rx="22" ry="9" transform="rotate(-38 42 40)" fill="#2D5A27"/>
+                    <ellipse cx="70" cy="30" rx="9" ry="24" fill="#2D5A27"/>
+                    <ellipse cx="98" cy="40" rx="22" ry="9" transform="rotate(38 98 40)" fill="#2D5A27"/>
+                    <ellipse cx="50" cy="82" rx="15" ry="20" fill="#F090B0" opacity="0.3"/>
+                </svg>
+
+                <!-- Zanahoria — bottom-right -->
+                <svg class="illus illus-zanahoria" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 110 185">
+                    <path d="M18 58 Q20 36 55 36 Q90 36 92 58 L55 172 Z" fill="#F08030"/>
+                    <ellipse cx="30" cy="40" rx="11" ry="34" transform="rotate(-15 30 40)" fill="#2D5A27"/>
+                    <ellipse cx="55" cy="26" rx="9" ry="36" fill="#2D5A27"/>
+                    <ellipse cx="80" cy="40" rx="11" ry="34" transform="rotate(15 80 40)" fill="#2D5A27"/>
+                    <ellipse cx="42" cy="90" rx="8" ry="18" transform="rotate(5 42 90)" fill="#E87030" opacity="0.3"/>
+                </svg>
+
+            </div>
+
+            <!-- Contenido centrado -->
+            <div class="hero-content">
+                <p class="hero-eyebrow">Para los que viven solos 🏠</p>
+                <h1 class="hero-title">¿Tenés comida en la heladera y no sabés qué cocinar?</h1>
+                <p class="hero-subtitle">Decinos qué ingredientes tenés y te mostramos recetas fáciles para que no se pudra la comida.</p>
+                <div class="hero-actions">
+                    <a href="#heladera" class="btn btn-primary">Tengo esto en la heladera</a>
+                    <a href="#super" class="btn btn-secondary">Qué comprar en el súper</a>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- CÓMO FUNCIONA -->
+        <section class="como" id="como">
+            <div class="section-container">
+                <p class="section-eyebrow">Simple y rápido</p>
+                <h2 class="section-title">Cómo funciona</h2>
+                <div class="steps-grid">
+                    <div class="step-card">
+                        <span class="step-emoji">🛒</span>
+                        <span class="step-number">01</span>
+                        <h3 class="step-title">Seleccioná lo que tenés en tu heladera</h3>
+                        <p class="step-desc">Marcá los ingredientes que tenés disponibles ahora mismo.</p>
+                    </div>
+                    <div class="step-card">
+                        <span class="step-emoji">🍳</span>
+                        <span class="step-number">02</span>
+                        <h3 class="step-title">Descubrí recetas que podés cocinar</h3>
+                        <p class="step-desc">Te mostramos qué podés hacer hoy y qué te falta para más opciones.</p>
+                    </div>
+                    <div class="step-card">
+                        <span class="step-emoji">✅</span>
+                        <span class="step-number">03</span>
+                        <h3 class="step-title">Aprovechá la comida antes de que se eche a perder</h3>
+                        <p class="step-desc">Cocinás rico, gastás menos y no tirás nada a la basura.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- RECETAS DESTACADAS -->
+        <section class="recetas-section" id="recetas">
+            <div class="section-container">
+                <p class="section-eyebrow">Recetas simples para vivir solo</p>
+                <h2 class="section-title">Recetas para uno</h2>
+                <div class="filter-bar">
+                    <button class="filter-btn active" data-filter="all">Todas</button>
+                    <button class="filter-btn" data-filter="fast">Menos de 15 min</button>
+                    <button class="filter-btn" data-filter="few">Pocos ingredientes</button>
+                    <button class="filter-btn" data-filter="one-pan">Una sola sartén</button>
+                </div>
+                <div class="recipe-grid" id="receta-grid-static">
+                    <div class="recipe-card" data-time="fast" data-ingredients="few" data-pans="one-pan">
+                        <div class="recipe-emoji">🥚</div>
+                        <div class="recipe-info">
+                            <div class="recipe-tags">
+                                <span class="tag">10 min</span>
+                                <span class="tag">3 ingredientes</span>
+                                <span class="tag tag-green">1 sartén</span>
+                            </div>
+                            <h3 class="recipe-name">Omelette de verduras</h3>
+                            <p class="recipe-ingredients">huevo · zanahoria · cebolla</p>
+                        </div>
+                    </div>
+                    <div class="recipe-card" data-time="fast" data-ingredients="few" data-pans="one-pan">
+                        <div class="recipe-emoji">🐟</div>
+                        <div class="recipe-info">
+                            <div class="recipe-tags">
+                                <span class="tag">5 min</span>
+                                <span class="tag">3 ingredientes</span>
+                                <span class="tag tag-green">sin cocción</span>
+                            </div>
+                            <h3 class="recipe-name">Tostada con atún</h3>
+                            <p class="recipe-ingredients">pan · atún · tomate</p>
+                        </div>
+                    </div>
+                    <div class="recipe-card" data-time="fast" data-ingredients="few" data-pans="one-pan">
+                        <div class="recipe-emoji">🍝</div>
+                        <div class="recipe-info">
+                            <div class="recipe-tags">
+                                <span class="tag">12 min</span>
+                                <span class="tag">3 ingredientes</span>
+                                <span class="tag tag-green">1 olla</span>
+                            </div>
+                            <h3 class="recipe-name">Pasta con tomate</h3>
+                            <p class="recipe-ingredients">pasta · tomate · ajo</p>
+                        </div>
+                    </div>
+                    <div class="recipe-card" data-time="slow" data-ingredients="few" data-pans="one-pan">
+                        <div class="recipe-emoji">🍳</div>
+                        <div class="recipe-info">
+                            <div class="recipe-tags">
+                                <span class="tag">20 min</span>
+                                <span class="tag">3 ingredientes</span>
+                                <span class="tag tag-green">1 sartén</span>
+                            </div>
+                            <h3 class="recipe-name">Tortilla de papa</h3>
+                            <p class="recipe-ingredients">huevo · papa · cebolla</p>
+                        </div>
+                    </div>
+                    <div class="recipe-card" data-time="fast" data-ingredients="few" data-pans="one-pan">
+                        <div class="recipe-emoji">🍳</div>
+                        <div class="recipe-info">
+                            <div class="recipe-tags">
+                                <span class="tag">15 min</span>
+                                <span class="tag">3 ingredientes</span>
+                                <span class="tag tag-green">1 sartén</span>
+                            </div>
+                            <h3 class="recipe-name">Arroz salteado</h3>
+                            <p class="recipe-ingredients">arroz · huevo · cebolla</p>
+                        </div>
+                    </div>
+                    <div class="recipe-card" data-time="slow" data-ingredients="normal" data-pans="one-pan">
+                        <div class="recipe-emoji">🍅</div>
+                        <div class="recipe-info">
+                            <div class="recipe-tags">
+                                <span class="tag">20 min</span>
+                                <span class="tag">4 ingredientes</span>
+                                <span class="tag tag-green">1 sartén</span>
+                            </div>
+                            <h3 class="recipe-name">Shakshuka</h3>
+                            <p class="recipe-ingredients">huevo · tomate · cebolla · pimiento</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TIPS RÁPIDOS -->
+        <section class="tips-rapidos">
+            <div class="section-container">
+                <p class="section-eyebrow">Para que dure más</p>
+                <h2 class="section-title">Tips para que no se pudra la comida</h2>
+                <div class="tips-grid">
+                    <div class="tip-card">
+                        <span class="tip-emoji">🥬</span>
+                        <h3 class="tip-title">Guardá las verduras bien</h3>
+                        <p class="tip-text">Las verduras de hoja duran más en papel de cocina dentro de una bolsa cerrada.</p>
+                    </div>
+                    <div class="tip-card">
+                        <span class="tip-emoji">❄️</span>
+                        <h3 class="tip-title">Freezá en porciones</h3>
+                        <p class="tip-text">Freezá el pan en fetas, el pollo en porciones y sobras de arroz o pasta cocida.</p>
+                    </div>
+                    <div class="tip-card">
+                        <span class="tip-emoji">🔄</span>
+                        <h3 class="tip-title">Aprovechá las sobras</h3>
+                        <p class="tip-text">El arroz de ayer es el arroz salteado de hoy. Las verduras asadas van genial en una tortilla.</p>
+                    </div>
+                </div>
+                <div class="tips-cta">
+                    <a href="#tips" class="btn btn-secondary">Ver todos los tips</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- TENGO ESTO EN LA HELADERA -->
+        <section class="heladera-section" id="heladera">
+            <div class="section-container">
+                <p class="section-eyebrow">La herramienta principal</p>
+                <h2 class="section-title">Tengo esto en la heladera</h2>
+                <p class="section-subtitle">Seleccioná los ingredientes que tenés y te decimos qué podés cocinar.</p>
+
+                <div class="ingredient-input-row">
+                    <input
+                        type="text"
+                        id="input-ingrediente"
+                        class="ingredient-input"
+                        placeholder="Escribí un ingrediente (ej: brócoli, lentejas...)"
+                        autocomplete="off"
+                    >
+                    <button class="btn btn-primary" id="btn-agregar-ingrediente">Agregar</button>
+                </div>
+
+                <div class="ingredient-grid">
+                    <div class="ingredient-category">
+                        <h3 class="category-title">🥩 Proteínas</h3>
+                        <div class="pills-row">
+                            <button class="pill" data-ingredient="huevo">🥚 huevo</button>
+                            <button class="pill" data-ingredient="pollo">🍗 pollo</button>
+                            <button class="pill" data-ingredient="atún">🐟 atún</button>
+                            <button class="pill" data-ingredient="queso">🧀 queso</button>
+                        </div>
+                    </div>
+                    <div class="ingredient-category">
+                        <h3 class="category-title">🥦 Verduras</h3>
+                        <div class="pills-row">
+                            <button class="pill" data-ingredient="cebolla">🧅 cebolla</button>
+                            <button class="pill" data-ingredient="tomate">🍅 tomate</button>
+                            <button class="pill" data-ingredient="zanahoria">🥕 zanahoria</button>
+                            <button class="pill" data-ingredient="papa">🥔 papa</button>
+                            <button class="pill" data-ingredient="pimiento">🫑 pimiento</button>
+                            <button class="pill" data-ingredient="ajo">🧄 ajo</button>
+                        </div>
+                    </div>
+                    <div class="ingredient-category">
+                        <h3 class="category-title">🌾 Bases</h3>
+                        <div class="pills-row">
+                            <button class="pill" data-ingredient="arroz">🍚 arroz</button>
+                            <button class="pill" data-ingredient="pasta">🍝 pasta</button>
+                            <button class="pill" data-ingredient="pan">🍞 pan</button>
+                        </div>
+                    </div>
+                    <div class="ingredient-category" id="categoria-otros" style="display:none">
+                        <h3 class="category-title">➕ Otros ingredientes</h3>
+                        <div class="pills-row" id="pills-otros"></div>
+                    </div>
+                </div>
+
+                <div class="heladera-cta">
+                    <button class="btn btn-primary btn-large" id="btn-ver-recetas">Ver recetas</button>
+                    <button class="btn btn-ghost" id="btn-limpiar">Limpiar selección</button>
+                </div>
+
+                <div id="resultados" class="resultados hidden">
+                    <div class="resultado-section" id="seccion-posibles">
+                        <h3 class="resultado-title">
+                            <span class="resultado-icon">✅</span>
+                            Podés hacer ahora
+                        </h3>
+                        <div class="resultado-grid" id="recetas-posibles"></div>
+                    </div>
+                    <div class="resultado-section" id="seccion-casi">
+                        <h3 class="resultado-title">
+                            <span class="resultado-icon">🛒</span>
+                            Casi podés hacer
+                        </h3>
+                        <p class="resultado-hint">Solo te falta un ingrediente más</p>
+                        <div class="resultado-grid" id="recetas-casi"></div>
+                    </div>
+                    <div class="resultado-empty hidden" id="resultado-vacio">
+                        <span class="empty-emoji">🤔</span>
+                        <p>No encontramos recetas con esos ingredientes. Probá seleccionando más cosas.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- QUÉ COMPRAR EN EL SÚPER -->
+        <section class="super-section" id="super">
+            <div class="section-container">
+                <p class="section-eyebrow">Para planificar tus compras</p>
+                <h2 class="section-title">Qué comprar en el súper</h2>
+                <p class="section-subtitle">Ingredientes versátiles que sirven para muchas recetas y duran bastante tiempo.</p>
+
+                <div class="super-grid">
+                    <div class="super-category">
+                        <div class="super-category-header">
+                            <span class="super-emoji">🥚</span>
+                            <h3 class="super-category-title">Proteínas fáciles</h3>
+                        </div>
+                        <ul class="super-list">
+                            <li><span>Huevos</span> <span class="badge badge-red">esencial</span></li>
+                            <li><span>Pollo</span> <span class="badge badge-green">freezable</span></li>
+                            <li><span>Atún en lata</span> <span class="badge badge-blue">dura meses</span></li>
+                        </ul>
+                    </div>
+                    <div class="super-category">
+                        <div class="super-category-header">
+                            <span class="super-emoji">🥕</span>
+                            <h3 class="super-category-title">Verduras que duran</h3>
+                        </div>
+                        <ul class="super-list">
+                            <li><span>Zanahoria</span> <span class="badge badge-yellow">2–3 semanas</span></li>
+                            <li><span>Cebolla</span> <span class="badge badge-yellow">1–2 meses</span></li>
+                            <li><span>Papa</span> <span class="badge badge-yellow">dura mucho</span></li>
+                            <li><span>Repollo</span> <span class="badge badge-yellow">dura mucho</span></li>
+                        </ul>
+                    </div>
+                    <div class="super-category">
+                        <div class="super-category-header">
+                            <span class="super-emoji">🍚</span>
+                            <h3 class="super-category-title">Bases para cocinar</h3>
+                        </div>
+                        <ul class="super-list">
+                            <li><span>Arroz</span> <span class="badge badge-green">sirve para todo</span></li>
+                            <li><span>Pasta</span> <span class="badge badge-green">sirve para todo</span></li>
+                            <li><span>Pan</span> <span class="badge badge-blue">freezable</span></li>
+                        </ul>
+                    </div>
+                    <div class="super-category">
+                        <div class="super-category-header">
+                            <span class="super-emoji">🧄</span>
+                            <h3 class="super-category-title">Básicos de sabor</h3>
+                        </div>
+                        <ul class="super-list">
+                            <li><span>Ajo</span> <span class="badge badge-yellow">dura mucho</span></li>
+                            <li><span>Aceite de oliva</span> <span class="badge badge-blue">dura meses</span></li>
+                            <li><span>Salsa de tomate</span> <span class="badge badge-blue">dura meses</span></li>
+                            <li><span>Especias</span> <span class="badge badge-blue">dura meses</span></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="combo-box">
+                    <div class="combo-header">
+                        <span class="combo-icon">🛒</span>
+                        <div>
+                            <h3 class="combo-title">Comprá esto para la semana</h3>
+                            <p class="combo-subtitle">Una compra inteligente para comer variado sin gastar de más</p>
+                        </div>
+                    </div>
+                    <div class="combo-items">
+                        <span class="combo-item">huevos</span>
+                        <span class="combo-item">arroz</span>
+                        <span class="combo-item">zanahoria</span>
+                        <span class="combo-item">cebolla</span>
+                        <span class="combo-item">pasta</span>
+                        <span class="combo-item">tomate</span>
+                        <span class="combo-item">atún</span>
+                    </div>
+                    <div class="combo-result">
+                        <span class="combo-arrow">↓</span>
+                        <p class="combo-result-label">Con eso podés hacer:</p>
+                        <div class="combo-recipes">
+                            <span class="combo-recipe">🥚 tortilla</span>
+                            <span class="combo-recipe">🍳 arroz salteado</span>
+                            <span class="combo-recipe">🍝 pasta con tomate</span>
+                            <span class="combo-recipe">🐟 tostada con atún</span>
+                            <span class="combo-recipe">🥕 omelette</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- QUE NO SE TE PUDRA -->
+        <section class="conservacion-section" id="tips">
+            <div class="section-container">
+                <p class="section-eyebrow">Guía de conservación</p>
+                <h2 class="section-title">Que no se te pudra la comida</h2>
+                <p class="section-subtitle">Cuánto duran los alimentos y cómo conservarlos bien.</p>
+
+                <div class="conservacion-grid">
+                    <div class="conservacion-card">
+                        <span class="conservacion-emoji">🥚</span>
+                        <h3 class="conservacion-name">Huevos</h3>
+                        <p class="conservacion-duracion">3–4 semanas en heladera</p>
+                        <p class="conservacion-tip">Guardarlos en la puerta no es lo mejor — van mejor en el estante del medio.</p>
+                    </div>
+                    <div class="conservacion-card">
+                        <span class="conservacion-emoji">🥕</span>
+                        <h3 class="conservacion-name">Zanahoria</h3>
+                        <p class="conservacion-duracion">2–3 semanas</p>
+                        <p class="conservacion-tip">Guardarlas en bolsa o recipiente cerrado en la heladera.</p>
+                    </div>
+                    <div class="conservacion-card">
+                        <span class="conservacion-emoji">🧅</span>
+                        <h3 class="conservacion-name">Cebolla</h3>
+                        <p class="conservacion-duracion">1–2 meses</p>
+                        <p class="conservacion-tip">Fuera de la heladera, en lugar fresco y seco. Una vez cortada, guardar en heladera en recipiente cerrado.</p>
+                    </div>
+                    <div class="conservacion-card">
+                        <span class="conservacion-emoji">🍞</span>
+                        <h3 class="conservacion-name">Pan</h3>
+                        <p class="conservacion-duracion">2–3 días a temperatura ambiente</p>
+                        <p class="conservacion-tip">Freezarlo en porciones es la mejor opción para que dure semanas.</p>
+                    </div>
+                    <div class="conservacion-card">
+                        <span class="conservacion-emoji">🍅</span>
+                        <h3 class="conservacion-name">Tomate</h3>
+                        <p class="conservacion-duracion">1 semana a temperatura ambiente</p>
+                        <p class="conservacion-tip">No guardar en heladera si no están maduros. Una vez maduros, la heladera ayuda.</p>
+                    </div>
+                    <div class="conservacion-card">
+                        <span class="conservacion-emoji">🍗</span>
+                        <h3 class="conservacion-name">Pollo</h3>
+                        <p class="conservacion-duracion">1–2 días en heladera</p>
+                        <p class="conservacion-tip">Mejor freezarlo de una si no lo vas a cocinar hoy o mañana.</p>
+                    </div>
+                    <div class="conservacion-card">
+                        <span class="conservacion-emoji">🥬</span>
+                        <h3 class="conservacion-name">Verduras de hoja</h3>
+                        <p class="conservacion-duracion">3–5 días</p>
+                        <p class="conservacion-tip">Envolver en papel de cocina dentro de una bolsa en la heladera.</p>
+                    </div>
+                    <div class="conservacion-card">
+                        <span class="conservacion-emoji">🥔</span>
+                        <h3 class="conservacion-name">Papa</h3>
+                        <p class="conservacion-duracion">2–3 semanas</p>
+                        <p class="conservacion-tip">Fuera de la heladera, en lugar oscuro y fresco. No junto a cebollas.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer" id="footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <a href="#top" class="logo footer-logo">
+                    <span class="logo-emoji">🥬</span>
+                    <span class="logo-text">Que No Se Pudra</span>
+                </a>
+                <p class="footer-tagline">Cocinar rico cuando vivís solo.</p>
+            </div>
+            <nav class="footer-nav">
+                <ul>
+                    <li><a href="#heladera">Heladera</a></li>
+                    <li><a href="#recetas">Recetas</a></li>
+                    <li><a href="#super">Súper</a></li>
+                    <li><a href="#tips">Tips</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="footer-bottom">
+            <p class="footer-copy">Hecho con ❤️ para los que viven solos y quieren comer bien.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
