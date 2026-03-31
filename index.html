@@ -29,8 +29,32 @@
                 <li><a href="#tips">Tips</a></li>
             </ul>
         </nav>
-        <a href="#heladera" class="btn btn-primary">Tengo esto en la heladera</a>
+        <div class="header-actions">
+            <a href="#heladera" class="btn btn-primary">Tengo esto en la heladera</a>
+            <button class="btn btn-auth" id="btn-auth">Entrar</button>
+            <div class="user-badge" id="user-badge" hidden>
+                <span class="user-email" id="user-email"></span>
+                <button class="btn-logout" id="btn-logout">Salir</button>
+            </div>
+        </div>
     </header>
+
+    <!-- AUTH MODAL -->
+    <div class="auth-modal-overlay" id="auth-modal" aria-hidden="true">
+        <div class="auth-modal" role="dialog" aria-modal="true" aria-labelledby="auth-modal-title">
+            <button class="auth-modal-close" id="auth-modal-close" aria-label="Cerrar">✕</button>
+            <h2 class="auth-modal-title" id="auth-modal-title">Entrar</h2>
+            <p class="auth-error" id="auth-error" hidden></p>
+            <form class="auth-form" id="auth-form" novalidate>
+                <label for="auth-email">Correo</label>
+                <input type="email" id="auth-email" placeholder="tu@correo.com" required autocomplete="email">
+                <label for="auth-password">Contraseña</label>
+                <input type="password" id="auth-password" placeholder="••••••••" required autocomplete="current-password" minlength="6">
+                <button type="submit" class="btn btn-primary auth-submit" id="auth-submit">Entrar</button>
+            </form>
+            <p class="auth-toggle">¿No tenés cuenta? <button type="button" id="auth-toggle-btn">Registrate</button></p>
+        </div>
+    </div>
 
     <main>
 

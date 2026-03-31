@@ -284,6 +284,115 @@ function initScroll() {
     });
 }
 
+// --- Auth ---
+
+let authMode = 'login';
+
+function openAuthModal() {
+    document.getElementById('auth-modal').removeAttribute('aria-hidden');
+    document.getElementById('auth-email').focus();
+}
+
+function closeAuthModal() {
+    document.getElementById('auth-modal').setAttribute('aria-hidden', 'true');
+    document.getElementById('auth-form').reset();
+    const errorEl = document.getElementById('auth-error');
+    errorEl.hidden = true;
+}
+
+function setAuthMode(mode) {
+    authMode = mode;
+    const title    = document.getElementById('auth-modal-title');
+    const submit   = document.getElementById('auth-submit');
+    const toggleP  = document.querySelector('.auth-toggle');
+    if (mode === 'login') {
+        title.textContent  = 'Entrar';
+        submit.textContent = 'Entrar';
+        toggleP.innerHTML  = '¿No tenés cuenta? <button type="button" id="auth-toggle-btn">Registrate</button>';
+    } else {
+        title.textContent  = 'Crear cuenta';
+        submit.textContent = 'Registrarme';
+        toggleP.innerHTML  = '¿Ya tenés cuenta? <button type="button" id="auth-toggle-btn">Entrar</button>';
+    }
+    document.getElementById('auth-toggle-btn').addEventListener('click', () => {
+        setAuthMode(authMode === 'login' ? 'signup' : 'login');
+    });
+}
+
+function updateAuthUI(user) {
+    const btnAuth  = document.getElementById('btn-auth');
+    const userBadge = document.getElementById('user-badge');
+    const userEmail = document.getElementById('user-email');
+    if (user) {
+        btnAuth.hidden     = true;
+        userBadge.hidden   = false;
+        userEmail.textContent = user.email;
+    } else {
+        btnAuth.hidden     = false;
+        userBadge.hidden   = true;
+    }
+}
+
+function translateAuthError(msg) {
+    if (msg.includes('Invalid login credentials'))   return 'Correo o contraseña incorrectos.';
+    if (msg.includes('Email not confirmed'))          return 'Confirmá tu correo antes de entrar.';
+    if (msg.includes('User already registered'))      return 'Este correo ya está registrado.';
+    if (msg.includes('Password should be at least')) return 'La contraseña debe tener al menos 6 caracteres.';
+    return 'Ocurrió un error. Intentá de nuevo.';
+}
+
+function initAuth() {
+    db.auth.getSession().then(({ data: { session } }) => {
+        updateAuthUI(session?.user ?? null);
+    });
+
+    db.auth.onAuthStateChange((_event, session) => {
+        updateAuthUI(session?.user ?? null);
+        if (session) closeAuthModal();
+    });
+
+    document.getElementById('btn-auth').addEventListener('click', openAuthModal);
+    document.getElementById('auth-modal-close').addEventListener('click', closeAuthModal);
+    document.getElementById('auth-modal').addEventListener('click', (e) => {
+        if (e.target === e.currentTarget) closeAuthModal();
+    });
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeAuthModal();
+    });
+
+    document.getElementById('auth-toggle-btn').addEventListener('click', () => {
+        setAuthMode(authMode === 'login' ? 'signup' : 'login');
+    });
+
+    document.getElementById('btn-logout').addEventListener('click', async () => {
+        await db.auth.signOut();
+    });
+
+    document.getElementById('auth-form').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const email    = document.getElementById('auth-email').value.trim();
+        const password = document.getElementById('auth-password').value;
+        const submit   = document.getElementById('auth-submit');
+        const errorEl  = document.getElementById('auth-error');
+
+        submit.disabled    = true;
+        submit.textContent = authMode === 'login' ? 'Entrando...' : 'Registrando...';
+        errorEl.hidden     = true;
+
+        const result = authMode === 'login'
+            ? await db.auth.signInWithPassword({ email, password })
+            : await db.auth.signUp({ email, password });
+
+        submit.disabled    = false;
+        submit.textContent = authMode === 'login' ? 'Entrar' : 'Registrarme';
+
+        if (result.error) {
+            errorEl.textContent = translateAuthError(result.error.message);
+            errorEl.hidden      = false;
+        }
+    });
+}
+
 // --- Init ---
 
 document.addEventListener('DOMContentLoaded', async () => {
@@ -339,4 +448,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     // 5. Filtros de recetas y scroll del header
     initFilters();
     initScroll();
+
+    // 6. Auth
+    initAuth();
 });
